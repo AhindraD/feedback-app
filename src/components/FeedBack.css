@@ -11,7 +11,8 @@
 .send-cont textarea {
     width: 600px;
     min-height: 400px;
-    padding: 20px;
+    padding: 40px;
+    font-size: 20px;
 }
 
 .f-send {
