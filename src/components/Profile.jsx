@@ -46,7 +46,7 @@ export default function Profile() {
             <img src="./images/avatar1.png" alt="" />
             {/* <Avatar /> */}
             <div className="share">
-                <a href={`http://localhost:3000/${userData.userName}`}>Ask for Feedback</a>
+                <a href={`https://anonym-feedback.netlify.app/${userData.userName}`}>Ask for Feedback</a>
             </div>
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
