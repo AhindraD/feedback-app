@@ -5,7 +5,7 @@ import UserContext from "../Contexts/UserContext";
 import './Profile.css'
 //import Avatar from './avatar/Avatar'
 import { useNavigate } from 'react-router-dom';
-import { ref, onValue, set, push } from "firebase/database";
+import { ref, onValue, set, push, remove } from "firebase/database";
 import { database, auth } from "../firebase-config";
 
 export default function Profile() {
@@ -33,13 +33,20 @@ export default function Profile() {
         });
     }, [])
 
+
+    function deleteFeedBack(targetID) {
+        //console.log(targetID);
+        let delRef = ref(database, 'users/' + userID + '/feedbacks/' + targetID);
+        remove(delRef);
+    }
+
     return (
         <div className="profile-cont">
             <p className="profile-name">{userData.userName}</p>
             <img src="./images/avatar1.png" alt="" />
             {/* <Avatar /> */}
             <div className="share">
-                <a href={`http://localhost:3000/${userData.userName}`}>Ask for Feedback</a>
+                <a href={`http://localhost:3000/${userData.userId}`}>Ask for Feedback</a>
             </div>
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
@@ -47,7 +54,9 @@ export default function Profile() {
                     Object.keys(userData.feedbacks).map((elem, indx) => {
                         return <div className="f-card" key={indx}>
                             <p className='f-text'>{userData.feedbacks[elem].feedbackText}</p>
-                            <button className="f-del">✖</button>
+                            <button className="f-del" onClick={() => {
+                                deleteFeedBack(elem);
+                            }}>✖</button>
                         </div>
                     })
                     : null}

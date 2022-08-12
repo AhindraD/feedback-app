@@ -13,24 +13,28 @@ export default function FeedBack() {
     let params = useParams();
     let feedBackID = params.feedBackID;
 
-    let [text, setText] = useState('lol');
+    let [text, setText] = useState('');
 
     useEffect(() => {
 
-        if (userID === null) {
-            alert('Please Log in first!');
-            goTo('/');
-        }
+        // if (userID === null) {
+        //     alert('Please Log in first!');
+        //     goTo('/');
+        // }
         //console.log(userID);
         //console.log('users/' + feedBackID + '/feedbacks');
+        
+    }, [])
+
+    function sendFeedback(txt){
         const targetUserRef = ref(database, 'users/' + feedBackID + '/feedbacks');
         const newFeedBackRef = push(targetUserRef);
         set(newFeedBackRef, {
             senderID: userID,
-            feedbackText: text,
+            feedbackText: txt,
             timeStamp: new Date().toUTCString(),
         });
-    }, [])
+    }
 
     return (
         <div className='send-cont'>
@@ -39,7 +43,7 @@ export default function FeedBack() {
             }}>
 
             </textarea>
-            <button className='f-send'>Send🚀</button>
+            <button className='f-send' onClick={()=>sendFeedback(text)}>Send🚀</button>
         </div>
     )
 }
