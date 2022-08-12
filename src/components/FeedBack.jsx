@@ -23,10 +23,10 @@ export default function FeedBack() {
         // }
         //console.log(userID);
         //console.log('users/' + feedBackID + '/feedbacks');
-        
+
     }, [])
 
-    function sendFeedback(txt){
+    function sendFeedback(txt) {
         const targetUserRef = ref(database, 'users/' + feedBackID + '/feedbacks');
         const newFeedBackRef = push(targetUserRef);
         set(newFeedBackRef, {
@@ -34,16 +34,19 @@ export default function FeedBack() {
             feedbackText: txt,
             timeStamp: new Date().toUTCString(),
         });
+
+        alert('FeedBack sent successfully!');
+        setText(() => '')
     }
 
     return (
         <div className='send-cont'>
-            <textarea name="" id="" placeholder='please be civil!' onChange={(e) => {
+            <textarea name="" id="" placeholder='please be civil!' value={text} onChange={(e) => {
                 setText(() => e.target.value);
             }}>
 
             </textarea>
-            <button className='f-send' onClick={()=>sendFeedback(text)}>Send🚀</button>
+            <button className='f-send' onClick={() => sendFeedback(text)}>Send🚀</button>
         </div>
     )
 }
