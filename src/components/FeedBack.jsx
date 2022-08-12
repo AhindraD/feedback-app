@@ -14,20 +14,35 @@ export default function FeedBack() {
     let feedBackID = params.feedBackID;
 
     let [text, setText] = useState('');
+    let [receiverID, setReceiverID] = useState('');
 
     useEffect(() => {
-
         // if (userID === null) {
         //     alert('Please Log in first!');
         //     goTo('/');
         // }
-        //console.log(userID);
-        //console.log('users/' + feedBackID + '/feedbacks');
+        //GETTING ID from the UserName
+        const allUsersRef = ref(database, 'users/');
+        onValue(allUsersRef, (snapshot) => {
+            let data = snapshot.val();
+            //console.log(data);
+            data = data === undefined ? {} : data;
+            //console.log(data.feedbacks);
+            for (const key in data) {
+                if (data[key].userName === feedBackID) {
+                    feedBackID = data[key].userId;
+                    setReceiverID(() => feedBackID);
+                    //console.log(feedBackID);
+                    break;
+                }
+            }
+        });
 
     }, [])
 
     function sendFeedback(txt) {
-        const targetUserRef = ref(database, 'users/' + feedBackID + '/feedbacks');
+        //console.log(receiverID);
+        const targetUserRef = ref(database, 'users/' + receiverID + '/feedbacks');
         const newFeedBackRef = push(targetUserRef);
         set(newFeedBackRef, {
             senderID: userID,
