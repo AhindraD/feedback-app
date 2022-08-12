@@ -45,8 +45,8 @@ export default function Profile() {
             <p className="profile-name">{userData.userName}</p>
             <img src="./images/avatar1.png" alt="" />
             {/* <Avatar /> */}
-            <div className="share">
-                <a href={`https://anonym-feedback.netlify.app/${userData.userName}`}>Ask for Feedback</a>
+            <div className="share" onClick={() => { goTo(`/${userData.userName}`) }}>
+                Ask for Feedback
             </div>
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
