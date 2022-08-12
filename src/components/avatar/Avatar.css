@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 32px;
+}
+
+/*feel free to remove this*/
+.profile-cont {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.curr-avatar,
+.avatar-list {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.curr-avatar {}
+
+.curr-avatar:hover,
+.curr-avatar:active {
+    outline: 1px solid rgb(113, 112, 112);
+}
+
+.avatar-ind {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatar-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.border {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.avatar-ind:hover .border {
+    background-color: rgba(0, 0, 0, 0.358);
+}
+
+.avatar-ind:hover {
+    outline: 5px solid rgb(235, 235, 235);
+}
+
+.loading .border {
+    border-top: 5px solid #0099ff;
+    border-right: 5px solid rgb(85, 255, 0);
+    border-bottom: 5px solid rgb(255, 255, 0);
+    border-left: 5px solid rgb(255, 0, 0);
+    animation: laodin 700ms linear infinite;
+}
+
+@keyframes laodin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card {
+    width: 630px;
+    height: 390px;
+    background-color: rgba(0, 0, 0, 0.635);
+    border-radius: 9px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    opacity: 0;
+    position: relative;
+    transition: opacity 900ms ease;
+}
+
+.avatar-cont {
+    width: 630px;
+    height: 330px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 30px;
+    gap: 30px;
+    position: absolute;
+    top: 50vh;
+    left: -100vw;
+}
+
+#arrow {
+    position: absolute;
+    top: -10px;
+    left: 305px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+
+    border-bottom: 10px solid rgba(0, 0, 0, 0.635);
+}
+
+
+
+.animated {
+    animation: appear 700ms ease;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    /* transform: translate(0px, 0px) */
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translate(0px, -90px) scale(0.8);
+        ;
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translate(0px, 10px) scale(1.1);
+        ;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1);
+        ;
+    }
+}

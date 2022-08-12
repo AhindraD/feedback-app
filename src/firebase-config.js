@@ -26,9 +26,9 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 // Initialize Realtime Database and get a reference to the service
-const db = getDatabase(app);
+const database = getDatabase(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export { db, auth };
+export { database, auth };

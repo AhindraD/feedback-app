@@ -1,0 +1,35 @@
+.profile-cont {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    padding: 50px;
+}
+
+.profile-cont img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    outline: 2px solid cyan;
+}
+
+.feedback-cont {
+    width: 600px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    border-radius: 15px;
+    background-color: rgb(232, 248, 255);
+    padding: 20px;
+}
+
+.title-f {
+    font-size: 30px;
+    font-weight: bolder;
+}
