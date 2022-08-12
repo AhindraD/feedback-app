@@ -1,0 +1,26 @@
+.send-cont {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.send-cont textarea {
+    width: 600px;
+    min-height: 400px;
+    padding: 20px;
+}
+
+.f-send {
+    padding: 5px 30px;
+    background-color: rgb(83, 218, 255);
+    color: white;
+    border: none;
+    border-radius: 11px;
+    font-size: 20px;
+    font-weight: 550;
+    cursor: pointer;
+}

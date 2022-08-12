@@ -49,7 +49,13 @@ function App() {
           userName: username,
           userEmail: email,
           userId: email.replace('.', '_dot_'),
-          feedbacks: ['test-feedback'],
+          feedbacks: {
+            0: {
+              feedbackText: "feed backs exmp",
+              senderId: "john",
+              timeStamp: "11/11/11",
+            },
+          },
         }
         setUser(userObj);
 

@@ -27,7 +27,7 @@ export default function Profile() {
             let data = snapshot.val();
             //console.log(data);
             data = data === undefined ? {} : data;
-            //console.log(data);
+            //console.log(data.feedbacks);
             setUserData(data);
             setLoaded(true);
         });
@@ -44,9 +44,9 @@ export default function Profile() {
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
                 {loaded ?
-                    userData.feedbacks.map((elem, indx) => {
+                    Object.keys(userData.feedbacks).map((elem, indx) => {
                         return <div className="f-card" key={indx}>
-                            <p className='f-text'>{elem}</p>
+                            <p className='f-text'>{userData.feedbacks[elem].feedbackText}</p>
                             <button className="f-del">✖</button>
                         </div>
                     })
@@ -57,8 +57,16 @@ export default function Profile() {
 }
 
 /*
-feedbacks: ['test-feedback']
 userEmail: "ahindra2@mail.com"
 userId: "ahindra2@mail_dot_com"
 userName: "ahin2"
+
+feedbacks:{
+    0: {
+        feedbackText: "feed backs exmp",
+        senderId: "john",
+        timeStamp: "11/11/11",
+        },
+}
+
 */
