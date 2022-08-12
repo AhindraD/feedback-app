@@ -9,7 +9,7 @@ import { ref, onValue, set, push } from "firebase/database";
 import { database, auth } from "../firebase-config";
 
 export default function Profile() {
-    let { user, userID } = useContext(UserContext);
+    let { userID } = useContext(UserContext);
     let [userData, setUserData] = useState({});
     let [loaded, setLoaded] = useState(false);
 
@@ -22,8 +22,8 @@ export default function Profile() {
             goTo('/');
         }
         //console.log(userID);
-        const roomsRef = ref(database, 'users/' + userID);
-        onValue(roomsRef, (snapshot) => {
+        const userRef = ref(database, 'users/' + userID);
+        onValue(userRef, (snapshot) => {
             let data = snapshot.val();
             //console.log(data);
             data = data === undefined ? {} : data;
@@ -38,6 +38,9 @@ export default function Profile() {
             <p className="profile-name">{userData.userName}</p>
             <img src="./images/avatar1.png" alt="" />
             {/* <Avatar /> */}
+            <div className="share">
+                <a href={`http://localhost:3000/${userData.userName}`}>Ask for Feedback</a>
+            </div>
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
                 {loaded ?
