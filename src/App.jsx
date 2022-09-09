@@ -44,6 +44,7 @@ function App() {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        //console.log(user);
         // ...
         let userObj = {
           userName: username,

@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../Contexts/UserContext";
 import './Profile.css'
 //import Avatar from './avatar/Avatar'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ref, onValue, set, push, remove } from "firebase/database";
 import { database, auth } from "../firebase-config";
 
@@ -45,9 +45,9 @@ export default function Profile() {
             <p className="profile-name">{userData.userName}</p>
             <img src="./images/avatar1.png" alt="" />
             {/* <Avatar /> */}
-            <div className="share" onClick={() => { goTo(`/${userData.userName}`) }}>
+            <Link className="share" target={"_blank"} href={`/${userData.userName}`}>
                 Ask for Feedback
-            </div>
+            </Link>
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
                 {loaded ?
