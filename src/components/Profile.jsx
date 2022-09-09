@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../Contexts/UserContext";
 import './Profile.css'
 //import Avatar from './avatar/Avatar'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ref, onValue, set, push, remove } from "firebase/database";
 import { database, auth } from "../firebase-config";
 
@@ -45,9 +45,9 @@ export default function Profile() {
             <p className="profile-name">{userData.userName}</p>
             <img src="./images/avatar1.png" alt="" />
             {/* <Avatar /> */}
-            <Link className="share" target={"_blank"} href={`/${userData.userName}`}>
+            <a className="share" target={"_blank"} href={`/${userData.userName}`}>
                 Ask for Feedback
-            </Link>
+            </a>
             <section className="feedback-cont">
                 <p className='title-f'>FeedBacks:</p>
                 {loaded ?
